@@ -1,0 +1,5 @@
+steps:
+- name: 'asia.gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'asia.gcr.io/$PROJECT_ID/simple-todo:$TAG_NAME', '.']
+- name: 'asia.gcr.io/cloud-builders/docker'
+  args: ['push', 'asia.gcr.io/$PROJECT_ID/simple-todo:$TAG_NAME']
