@@ -3,3 +3,6 @@ steps:
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/simple-todo:$TAG_NAME', '.']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/simple-todo:$TAG_NAME']
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'simple-todo-service', '--image', 'gcr.io/$PROJECT_ID/simple-todo:$TAG_NAME', '--platform', 'managed', '--allow-unauthenticated', '--region', 'asia-southeast1']
